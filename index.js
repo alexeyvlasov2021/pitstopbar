@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     gsap.registerPlugin(ScrollTrigger)
 
     let mm = gsap.matchMedia();
-    mm.add("(min-width: 1250px)", () => {
+    // mm.add("(min-width: 1250px)", () => {
 
         const animate_book = () => {
             gsap.to('.book embed', {
@@ -73,37 +73,48 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
         const img_element = document.querySelector('.img-container img')
 
-        const changeImage = () => {
-            gsap.to(img_element, {
-                opacity: 0,
-                duration: 0.5,
-                onComplete: () => {
-                    gsap.to(img_element, {
-                        opacity: 1,
-                        duration: 0.5,
-                        onStart: () => {
-                            img_element.src = images[index]
+        //found rear issue with poor syncronization between opacity change and image swap
 
-                            if (index < images.length - 1) {
-                                index++
-                            }
-                            else {
-                                index = 0
-                            }
-                        }
-                    })
-                },
-            })
+        // const changeImage = () => {
+        //     gsap.to(img_element, {
+        //         opacity: 0,
+        //         duration: 0.5,
+        //         onComplete: () => {
+        //             gsap.to(img_element, {
+        //                 opacity: 1,
+        //                 duration: 0.5,
+        //                 onStart: () => {
+        //                     img_element.src = images[index]
+
+        //                     if (index < images.length - 1) {
+        //                         index++
+        //                     }
+        //                     else {
+        //                         index = 0
+        //                     }
+        //                 }
+        //             })
+        //         },
+        //     })
+        // }
+
+        const changeImage = () => {
+            img_element.src = images[index]
+
+            if (index < images.length - 1) {
+                index++
+            }
+            else {
+                index = 0
+            }
         }
 
         let interval;
 
-        // window.addEventListener("load", (event) => {
-        //     if(interval) clearInterval(interval)
-        //   });
 
         interval = setInterval(changeImage, 5000)
 
+        //clear timer when leaving the page
         window.addEventListener("beforeunload", () => {
             clearInterval(interval);
         });
@@ -116,5 +127,5 @@ document.addEventListener("DOMContentLoaded", (event) => {
         //     onLeaveBack: () => clearInterval(interval),
         //     onLeave: () => clearInterval(interval),
         // });
-    })
+    // })
 });

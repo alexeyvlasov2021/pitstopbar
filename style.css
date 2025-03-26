@@ -427,6 +427,14 @@ div.socials{
         width: 90vw;
     }
 
+    div.menu-img{
+        width: 700px;
+        height: 700px;
+        display: flex;
+        /* justify-content: center; */
+        /* align-items: center; */
+    }
+
     div.menu-container img{
         width: 400px;
         height: 400px;
