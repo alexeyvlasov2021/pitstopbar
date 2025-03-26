@@ -370,6 +370,7 @@ div.socials{
         align-items: center;
         background-position: center;
     }
+
     div.label{
         clip-path: none;
         /* background-color: transparent; */
@@ -381,14 +382,14 @@ div.socials{
 
     p#bar {
         margin-left: 0;
-        font-size: 2rem;
+        font-size: 1.4rem;
     }
     p#bar-name {
         font-size: 2.5rem;
     }
 
     header li {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
     header ul{
         padding: 0;
@@ -410,7 +411,7 @@ div.socials{
 
     div.block {
         width: 60vw;
-        height: 30vh;
+        height: 45vh;
     }
 
     div.menu h1 {
@@ -463,6 +464,11 @@ div.socials{
         /* margin-left: 5vw;
         margin-right: 5vw; */
     }
+
+    div.feedback-block hr {
+        width: 70vw;
+    }
+
     div.img-container img{
         justify-self: center;
     }
