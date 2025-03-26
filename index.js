@@ -72,21 +72,23 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     const changeImage = () => {
         gsap.to(img_element, {
-            opacity: 0.2,
-            duration: 0.1,
+            opacity: 0,
+            duration: 0.5,
             onComplete: () => {
                 gsap.to(img_element, {
                     opacity: 1,
-                    duration: 0.1,
-                })
-                img_element.src = images[index]
+                    duration: 0.5,
+                    onStart: () => {
+                        img_element.src = images[index]
 
-                if (index < images.length - 1) {
-                    index++
-                }
-                else {
-                    index = 0
-                }
+                        if (index < images.length - 1) {
+                            index++
+                        }
+                        else {
+                            index = 0
+                        }
+                    }
+                })
             },
         })
     }
@@ -97,11 +99,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
     //     if(interval) clearInterval(interval)
     //   });
 
-    interval = setInterval(changeImage, 3000)
+    interval = setInterval(changeImage, 5000)
 
     window.addEventListener("beforeunload", () => {
         clearInterval(interval);
-      });
+    });
 
     // ScrollTrigger.create({
     //     // markers: true,
