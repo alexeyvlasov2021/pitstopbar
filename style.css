@@ -479,6 +479,7 @@ div.socials{
         align-items: center;
         padding-bottom: 100px;
     }
+
     div.footer-outer {
         flex-direction: column;
         justify-content: center;
@@ -493,6 +494,11 @@ div.socials{
         align-self: flex-start;
         width: 90vw;
     }
+
+    div.contacts hr{
+        width: 70vw;
+    }
+
     footer img{
         width: 75%;
     }
