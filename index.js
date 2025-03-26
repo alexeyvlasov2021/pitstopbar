@@ -66,42 +66,50 @@ document.addEventListener("DOMContentLoaded", (event) => {
         './images/reviews3.png',
     ]
 
-    let index = 0
+    let index = 1
 
     const img_element = document.querySelector('.img-container img')
 
     const changeImage = () => {
         gsap.to(img_element, {
             opacity: 0.2,
-            // scale: 0.8,
             duration: 0.1,
             onComplete: () => {
                 gsap.to(img_element, {
                     opacity: 1,
-                    // scale: 1,
                     duration: 0.1,
                 })
                 img_element.src = images[index]
+
+                if (index < images.length - 1) {
+                    index++
+                }
+                else {
+                    index = 0
+                }
             },
         })
-
-        if (index < images.length - 1) {
-            index++
-        }
-        else {
-            index = 0
-        }
     }
 
     let interval;
 
-    ScrollTrigger.create({
-        // markers: true,
-        trigger: '.feedbacks',
-        onEnter: () => { interval = setInterval(changeImage, 3000) },
-        onEnterBack: () => { interval = setInterval(changeImage, 3000) },
-        onLeaveBack: () => clearInterval(interval),
-        onLeave: () => clearInterval(interval),
-    });
+    // window.addEventListener("load", (event) => {
+    //     if(interval) clearInterval(interval)
+    //   });
+
+    interval = setInterval(changeImage, 3000)
+
+    window.addEventListener("beforeunload", () => {
+        clearInterval(interval);
+      });
+
+    // ScrollTrigger.create({
+    //     // markers: true,
+    //     trigger: '.feedbacks',
+    //     onEnter: () => { interval = setInterval(changeImage, 3000) },
+    //     onEnterBack: () => { interval = setInterval(changeImage, 3000) },
+    //     onLeaveBack: () => clearInterval(interval),
+    //     onLeave: () => clearInterval(interval),
+    // });
 
 });
