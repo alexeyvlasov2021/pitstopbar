@@ -280,6 +280,7 @@ div.feedback-block hr{
 }
 div.img-container{
     width: 450px;
+    height: 495px;
     display: flex;
     justify-content: center;
 }
